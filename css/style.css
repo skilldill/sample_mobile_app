@@ -1,0 +1,73 @@
+.main-display {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.custom-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 27px;
+    padding-bottom: 3px;
+    background-color: #d1ecf1;
+    z-index: 1000;
+}
+
+.custom-navbar h3 {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    color: rgb(97, 97, 97);
+}
+
+.bottom-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bottom-menu button {
+    flex: 1;
+    background-color: #d1ecf1;
+    border: none;
+    outline: none;
+    padding-top: 3px;
+}
+
+.bottom-menu img {
+    margin: auto;
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+.bottom-menu small {
+    display: block;
+    font-size: 10px;
+}
+
+.page-holder {
+    padding: 60px 10px;
+    height: 100vh;
+    overflow: auto;
+}
+
+.card-profile {
+    border: none;
+}
+
+.avatar {
+    height: 250px;
+    width: 250px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.form-profile {
+    margin-top: 20px;
+    padding: 0 20px;
+}

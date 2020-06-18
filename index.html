@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>📱Mobile app📱</title>
+    </head>
+    <body>
+        <div class="main-display">
+            <div class="custom-navbar">
+                <h3 id="navbar-content">Main</h3>
+            </div>
+
+            <div class="page-holder">
+                <div class="page page-profile" id="profile-page">
+                    <div class="card card-profile">
+                        <div class="avatar">
+                            <img class="avatar" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Bill_Gates_1977.png" class="card-img-top" alt="Аватарка профиля">
+                        </div>
+                        <div class="card-body" id="card-profile">
+                            <h5 class="card-title" id="profile-name"></h5>
+                            <p class="card-text" id="profile-description"></p>
+                            <button class="btn btn-primary" id="btn-redact-profile">Редактировать</button>
+                        </div>
+                        <form id="profile-form" class="form-profile">
+                            <div class="form-group">
+                                <input type="text" name="name" autocomplete="off" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="description" autocomplete="off" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="btn-save-profile">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="page" id="list-page">
+                    <h1>List</h1>
+                </div>
+                <div class="page" id="contacts-page">
+                    <h1>Contacts</h1>
+                </div>
+                <div class="page" id="settings-page">
+                    <h1>Settings</h1>
+                </div>
+            </div>
+
+            <div class="bottom-menu d-flex justify-content-center">
+                <!-- Профиль, Контакты, Список дел, Настройки -->
+                <button class="btn-bottom" data-path="profile" data-pagename="Профиль">
+                    <img src="./img/icons/person-24px.svg" alt="Профиль">
+                    <small>Профиль</small>
+                </button>
+                <button class="btn-bottom" data-path="contacts" data-pagename="Контакты">
+                    <img src="./img/icons/people_alt-24px.svg" alt="Контакты">
+                    <small>Контакты</small>
+                </button>
+                <button class="btn-bottom" data-path="list" data-pagename="Список">
+                    <img src="./img/icons/list-24px.svg" alt="Список">
+                    <small>Список</small>
+                </button>
+                <button class="btn-bottom" data-path="settings" data-pagename="Настройки">
+                    <img src="./img/icons/settings-24px.svg" alt="Настройки">
+                    <small>Настройки</small>
+                </button>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+</html>
