@@ -15,10 +15,42 @@ const btnSaveProfile = document.getElementById('btn-save-profile');
 const profileName = document.getElementById('profile-name');
 const profileDescription = document.getElementById('profile-description');
 
+// CONTACTS
+const contactsList = document.getElementById('contacts-list');
+const searchContactsForm = document.getElementById('contacts-search-form');
+const btnAddContact = document.getElementById('btn-add-contact');
+const addContactForm = document.getElementById('add-contact-form');
+
 // INITIAL OBJECTS
 const user = {
     name: "Билл Гейтс",
     description: "Some quick example text to build on the card title and make up the bulk of the card's content."
+}
+
+let contacts = [
+    { name: "Стив Джобс", mobile: "8979873498732" },
+    { name: "Стив Возняк", mobile: "3675423475" },
+    { name: "Балмер", mobile: "765467253467" }
+];
+
+function createContactItem(contact) {
+    return `
+        <li class="list-group-item">
+            ${contact.name}
+            <div>
+                <small>${contact.mobile}</small>
+            </div>
+        </li>
+    `
+}
+
+function renderContacts(contacts) {
+    contactsList.innerHTML = '';
+
+    for(let i = 0; i < contacts.length; i++) {
+        const currentContact = contacts[i];
+        contactsList.innerHTML += createContactItem(currentContact);
+    }
 }
 
 function changeNavbarContent(value) {
@@ -31,6 +63,24 @@ function changeProfileContent(name, description) {
 }
 
 function initialApp() {
+    const savedName = localStorage.getItem('name');
+    const savedDescription = localStorage.getItem('description');
+    const savedContacts = localStorage.getItem('contacts');
+
+    // Проверка на сохранённые имя и описание
+    if (savedName) {
+        user.name = savedName;
+    }
+
+    if (savedDescription) {
+        user.description = savedDescription;
+    }
+
+    // Проверка сохраннённых контактов
+    if (savedContacts) {
+        contacts = JSON.parse(savedContacts);
+    }
+
     profilePage.style.display = "block";
     settingsPage.style.display = "none";
     listPage.style.display = "none";
@@ -40,6 +90,7 @@ function initialApp() {
 
     changeNavbarContent('Профиль');
     changeProfileContent(user.name, user.description);
+    renderContacts(contacts);
 
     profileForm['name'].value = user.name;
     profileForm['description'].value = user.description;
@@ -114,11 +165,43 @@ btnRedactProfile.addEventListener('click', function() {
 profileForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
+    // Сохраняем изменные данные
+    // F12 -> Application -> storage
+    localStorage.setItem('name', profileForm['name'].value);
+    localStorage.setItem('description', profileForm['description'].value);
+
     changeProfileContent(
         profileForm['name'].value, 
         profileForm['description'].value
     )
     switchProfileForm(false);
+})
+
+searchContactsForm['search-query-contacts'].addEventListener('input', function() {
+    const query = searchContactsForm['search-query-contacts'].value;
+    const filtredContacts = contacts.filter(function(contact) {
+        return contact.name.includes(query);
+    })
+
+    renderContacts(filtredContacts);
+})
+
+addContactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = addContactForm['name'].value;
+    const mobile = addContactForm['mobile'].value;
+
+    if (name.length && mobile.length) {
+        // const contact = { name: name, mobile: mobile };
+        contacts.unshift({ name, mobile });
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+        renderContacts(contacts);
+
+        addContactForm['name'].value = '';
+        addContactForm['mobile'].value = '';
+    }
+
 })
 
 menuBtnsBindEvent();
