@@ -185,3 +185,7 @@ body {
 .theme-dark .modal-title {
     color: rgb(223, 223, 223);
 }
+
+.theme-dark .btn-bottom {
+    color: rgb(223, 223, 223);
+}
