@@ -92,14 +92,14 @@ function initialApp() {
         contacts = JSON.parse(savedContacts);
     }
 
-    profilePage.style.display = "none";
-    settingsPage.style.display = "block";
+    profilePage.style.display = "block";
+    settingsPage.style.display = "none";
     listPage.style.display = "none";
     contactsPage.style.display = "none";
 
     profileForm.style.display = "none";
 
-    changeNavbarContent('Настройки');
+    changeNavbarContent('Профиль');
     changeProfileContent(user.name, user.description);
     renderContacts(contacts);
 
