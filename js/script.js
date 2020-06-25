@@ -21,6 +21,10 @@ const searchContactsForm = document.getElementById('contacts-search-form');
 const btnAddContact = document.getElementById('btn-add-contact');
 const addContactForm = document.getElementById('add-contact-form');
 
+// SETTINGS
+const btnClearStore = document.getElementById('btn-clear-store');
+const switchTheme = document.getElementById('switch-theme');
+
 // INITIAL OBJECTS
 const user = {
     name: "Билл Гейтс",
@@ -66,6 +70,13 @@ function initialApp() {
     const savedName = localStorage.getItem('name');
     const savedDescription = localStorage.getItem('description');
     const savedContacts = localStorage.getItem('contacts');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+        document.body.classList.add('theme-dark');
+        switchTheme.classList.add('switch-active');
+        switchTheme.setAttribute('data-checked', "1");
+    }
 
     // Проверка на сохранённые имя и описание
     if (savedName) {
@@ -81,14 +92,14 @@ function initialApp() {
         contacts = JSON.parse(savedContacts);
     }
 
-    profilePage.style.display = "block";
-    settingsPage.style.display = "none";
+    profilePage.style.display = "none";
+    settingsPage.style.display = "block";
     listPage.style.display = "none";
     contactsPage.style.display = "none";
 
     profileForm.style.display = "none";
 
-    changeNavbarContent('Профиль');
+    changeNavbarContent('Настройки');
     changeProfileContent(user.name, user.description);
     renderContacts(contacts);
 
@@ -202,6 +213,30 @@ addContactForm.addEventListener('submit', function(event) {
         addContactForm['mobile'].value = '';
     }
 
+})
+
+btnClearStore.addEventListener('click', function() {
+    if (localStorage.length > 0) {
+        const userAnswer = confirm('Вы уверены что хотите очистить localstorage?');
+    
+        if (userAnswer) {
+            localStorage.clear();
+        }
+    }
+})
+
+switchTheme.addEventListener('click', function() {
+    const checked = switchTheme.getAttribute('data-checked');
+    switchTheme.classList.toggle('switch-active');
+    document.body.classList.toggle('theme-dark');
+
+    if (checked === '0') {
+        switchTheme.setAttribute('data-checked', '1');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        switchTheme.setAttribute('data-checked', '0');
+        localStorage.setItem('theme', 'light');
+    }
 })
 
 menuBtnsBindEvent();

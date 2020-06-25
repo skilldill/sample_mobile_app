@@ -51,7 +51,7 @@
                         </div>
                     </form>
                     <div class="contacts">
-                        <ul class="list-group" id="contacts-list">
+                        <ul class="list-group list-group-flush" id="contacts-list">
                             <li class="list-group-item">
                                 Dapibus ac facilisis in
                                 <div>
@@ -95,8 +95,29 @@
                 <div class="page" id="list-page">
                     <h1>List</h1>
                 </div>
-                <div class="page" id="settings-page">
-                    <h1>Settings</h1>
+                <div class="page page-settigns" id="settings-page">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p>
+                                    Очистить localstorage
+                                </p>
+                                <button class="btn btn-primary" id="btn-clear-store">
+                                    Очистить
+                                </button>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p>
+                                    Тема
+                                </p>
+                                <div class="switch" id="switch-theme" data-checked="0">
+                                    <div class="switch-circle"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
